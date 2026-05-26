@@ -1,0 +1,10 @@
+  "mcpServers": {
+    "triz-mcp": {
+      "command": "C:/Users/user/AppData/Local/Microsoft/WindowsApps/python3.11.exe",
+      "args": [
+        "-X",
+        "utf8",
+        "c:/Users/user/triz_mcp/triz_mcp_server.py"
+      ]
+    }
+  }
