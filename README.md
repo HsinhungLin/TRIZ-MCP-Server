@@ -29,15 +29,17 @@ triz-mcp-server/
 ├── matrix.json           # 39x39 矛盾矩陣資料庫 (靜態資料)
 ├── requirements.txt      # Python 依賴套件清單
 └── README.md             # 專案說明檔
-
-##🚀 安裝與環境設定
+```
+## 🚀 安裝與環境設定
 複製專案到本地
-
+```
 Bash
 git clone [https://github.com/你的帳號/triz-mcp-server.git](https://github.com/你的帳號/triz-mcp-server.git)
 cd triz-mcp-server
+```
 建立並啟動虛擬環境 (強烈建議)
 
+```
 Bash
 # Windows
 python -m venv venv
@@ -46,12 +48,14 @@ venv\Scripts\activate
 # macOS / Linux
 python3 -m venv venv
 source venv/bin/activate
+```
 安裝依賴套件
 本專案使用 mcp 官方 SDK (包含 FastMCP 與 SSE 支援) 以及 pydantic。
-
+```
 Bash
 pip install mcp[sse] pydantic uvicorn starlette sse-starlette
-🔌 如何與 Claude Desktop 連線 (stdio 模式)
+```
+## 🔌 如何與 Claude Desktop 連線 (stdio 模式)
 如果你想在官方的 Claude Desktop 軟體中直接使用 TRIZ 專家系統，請修改 Claude 的設定檔：
 
 尋找設定檔 claude_desktop_config.json：
@@ -61,7 +65,7 @@ Windows: %APPDATA%\Claude\claude_desktop_config.json
 macOS: ~/Library/Application Support/Claude/claude_desktop_config.json
 
 在設定檔中加入以下內容（請替換為你電腦上的絕對路徑）：
-
+```
 JSON
 {
   "mcpServers": {
@@ -75,33 +79,38 @@ JSON
     }
   }
 }
+```
 💡 提示：Windows 用戶強烈建議保留 -X utf8 參數，以避免 Python 在輸出 Emoji 或中文字元時發生 CP950 編碼錯誤。
 
 重新啟動 Claude Desktop，點擊輸入框的「迴紋針 (Attach)」圖示，你就會看到 TRIZ 工具與 /triz 指令已經準備就緒！
 
-##🌐 啟動為 HTTP/SSE 網頁伺服器
+## 🌐 啟動為 HTTP/SSE 網頁伺服器
 如果你想將此 MCP 提供給 Web 應用程式、LangChain 或其他遠端 LLM 客戶端使用，請確保程式碼最下方使用的是 sse 傳輸模式：
 
-Python
+```Python
 if __name__ == "__main__":
     mcp.run(transport="sse", host="0.0.0.0", port=8000)
+```
 執行伺服器：
 
-Bash
+```Bash
 python triz_mcp_server.py
-# 伺服器將運行於 http://localhost:8000/sse
-🧪 使用 MCP Inspector 測試工具
+```
+## 伺服器將運行於 http://localhost:8000/sse
+## 🧪 使用 MCP Inspector 測試工具
 MCP 官方提供了視覺化的除錯介面 MCP Inspector，方便你在不消耗 LLM Token 的情況下單獨測試每一個工具的輸入與輸出。
 
 如果是 stdio 模式：
-
+```
 Bash
 npx @modelcontextprotocol/inspector python -X utf8 triz_mcp_server.py
+```
 如果是 SSE 模式 (需先啟動 Python 伺服器)：
-
+```
 Bash
 npx @modelcontextprotocol/inspector sse http://localhost:8000/sse
+```
 執行後，開啟瀏覽器前往 http://localhost:5173 即可進行視覺化操作與測試。
 
-📜 授權條款
+## 📜 授權條款
 本專案採用 MIT License 授權。歡迎自由使用、修改並貢獻更多 TRIZ 案例！
