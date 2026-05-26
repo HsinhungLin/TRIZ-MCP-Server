@@ -30,7 +30,7 @@ triz-mcp-server/
 ├── requirements.txt      # Python 依賴套件清單
 └── README.md             # 專案說明檔
 
-🚀 安裝與環境設定
+##🚀 安裝與環境設定
 複製專案到本地
 
 Bash
@@ -79,7 +79,7 @@ JSON
 
 重新啟動 Claude Desktop，點擊輸入框的「迴紋針 (Attach)」圖示，你就會看到 TRIZ 工具與 /triz 指令已經準備就緒！
 
-🌐 啟動為 HTTP/SSE 網頁伺服器
+##🌐 啟動為 HTTP/SSE 網頁伺服器
 如果你想將此 MCP 提供給 Web 應用程式、LangChain 或其他遠端 LLM 客戶端使用，請確保程式碼最下方使用的是 sse 傳輸模式：
 
 Python
